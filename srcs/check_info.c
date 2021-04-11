@@ -7,7 +7,7 @@ int	check_file(char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putendl_fd(CANT_OPEN_FILE, 2);
+		fputs(CANT_OPEN_FILE, stderr);
 	}
 	return (fd);
 }
