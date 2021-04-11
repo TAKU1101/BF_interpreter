@@ -9,7 +9,9 @@
 typedef struct s_info
 {
 	char		*filename;
-	int			f_help;
+	char		*code;
+	int			buffer_size;
+	char		*config_file;
 }				t_info;
 
 int				check_file(char *filename);
