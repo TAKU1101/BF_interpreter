@@ -6,7 +6,7 @@ Execution method
 
 ```shell
 > make
-> . . /bfi your_code.bf
+> ./bfi your_code.bf
 ```
 
 ### The following options are present
