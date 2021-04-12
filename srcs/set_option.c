@@ -1,6 +1,6 @@
 #include "bfi.h"
 
-static void	puts_help(void)
+static int	puts_help(void)
 {
 	fputs("usage: bfi [option] ... [-c cmd|file|-] ...\n", stdout);
 	fputs("Options and arguments\n", stdout);
@@ -21,6 +21,7 @@ static void	puts_help(void)
 	fputs(",: standard input for the value pointed to by the pointer\n", stdout);
 	fputs("[: move to ']' if the pointer points to a value of 0\n", stdout);
 	fputs("]: move to '[' if the pointer points to a non-zero value\n", stdout);
+	return (1);
 }
 
 static int	set_cmd(int i, char *argv[], t_info *info)
@@ -42,6 +43,25 @@ static int	puts_unkonown_option_error(char *option)
 	return (1);
 }
 
+static int	set_buffer_size(int i, char *argv[], t_info *info)
+{
+	int n;
+
+	if (!argv[i + 1])
+	{
+		fputs(C_OPTION_ERROR, stderr);
+		return (1);
+	}
+	n = atoi(argv[i + 1]);
+	if (n <= 0 || 100000 < n)
+	{
+		fputs(BUFFER_SIZE_ERROR, stderr);
+		return (1);
+	}
+	info->buffer_size = n;
+	return (0);
+}
+
 int			set_info(int argc, char *argv[], t_info *info)
 {
 	int i;
@@ -52,9 +72,15 @@ int			set_info(int argc, char *argv[], t_info *info)
 	while (i < argc && !rtv)
 	{
 		if (!strcmp("-h", argv[i]))
-			puts_help();
+		{
+			rtv += puts_help();
+			break;
+		}
 		else if (!strcmp("-b", argv[i]))
-			(void)NULL;
+		{
+			rtv += set_buffer_size(i, argv, info);
+			i++;
+		}
 		else if (!strcmp("--config", argv[i]))
 			(void)NULL;
 		else if (!strcmp("-c", argv[i]))
