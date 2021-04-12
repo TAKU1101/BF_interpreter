@@ -15,4 +15,6 @@ void	free_info(t_info *info)
 	free_str(info->code);
 	free_str(info->config_file);
 	free_str(info->code_char);
+	if (info->fd != -1)
+		close(info->fd);
 }

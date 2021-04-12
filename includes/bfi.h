@@ -15,6 +15,7 @@
 typedef struct s_info
 {
 	char		*filename;
+	int			fd;
 	char		*code;
 	int			buffer_size;
 	char		*config_file;
@@ -25,5 +26,6 @@ int				check_info(t_info *info);
 int				set_info(int argc, char *argv[], t_info *info);
 void			init_info(t_info *info);
 void			free_info(t_info *info);
+void			exec_code(t_info *info);
 
 #endif

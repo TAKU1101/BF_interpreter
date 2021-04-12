@@ -7,4 +7,5 @@ void	init_info(t_info *info)
 	info->buffer_size = 30000;
 	info->config_file = NULL;
 	info->code_char = strdup("+-><.,[]");
+	info->fd = -1;
 }
