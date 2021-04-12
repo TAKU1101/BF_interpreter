@@ -8,15 +8,20 @@
 # include <stdlib.h>
 # include "error_msg.h"
 
+/*
+** code_char def "+-><.,[]"
+*/
+
 typedef struct s_info
 {
 	char		*filename;
 	char		*code;
 	int			buffer_size;
 	char		*config_file;
+	char		*code_char;
 }				t_info;
 
-int				check_file(char *filename);
+int				check_info(t_info *info);
 int				set_info(int argc, char *argv[], t_info *info);
 void			init_info(t_info *info);
 

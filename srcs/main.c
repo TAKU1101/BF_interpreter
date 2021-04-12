@@ -6,11 +6,10 @@ int main(int argc, char *argv[], char *envp[])
 
 	init_info(&info);
 	if (set_info(argc, argv, &info))
-	{
-		return (0);
-	}
+		return (1);
+	if (check_info(&info))
+		return (1);
+	return (0);
 //	check_file(argv[1]);
-	(void)argc;
-	(void)argv;
 	(void)envp;
 }

@@ -25,7 +25,7 @@ static void	puts_help(void)
 
 static int	set_cmd(int i, char *argv[], t_info *info)
 {
-	if (argv[i + 1])
+	if (!argv[i + 1])
 	{
 		fputs(C_OPTION_ERROR, stderr);
 		return (1);
@@ -34,11 +34,12 @@ static int	set_cmd(int i, char *argv[], t_info *info)
 	return (0);
 }
 
-static void	puts_unkonown_option_error(char *option)
+static int	puts_unkonown_option_error(char *option)
 {
 	fputs(UNKNOWN_OPTION, stderr);
 	fputs(option, stderr);
 	fputs("\n", stderr);
+	return (1);
 }
 
 int			set_info(int argc, char *argv[], t_info *info)
@@ -63,7 +64,7 @@ int			set_info(int argc, char *argv[], t_info *info)
 		}
 		else if (argv[i][0] == '-')
 		{
-			puts_unkonown_option_error(argv[i]);
+			rtv += puts_unkonown_option_error(argv[i]);
 			break;
 		}
 		else
