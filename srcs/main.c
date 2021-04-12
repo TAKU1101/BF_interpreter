@@ -1,6 +1,6 @@
 #include "bfi.h"
 
-int main(int argc, char *argv[], char *envp[])
+int main(int argc, char *argv[])
 {
 	t_info	info;
 
@@ -9,7 +9,6 @@ int main(int argc, char *argv[], char *envp[])
 		return (1);
 	if (check_info(&info))
 		return (1);
+	free_info(&info);
 	return (0);
-//	check_file(argv[1]);
-	(void)envp;
 }

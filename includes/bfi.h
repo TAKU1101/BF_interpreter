@@ -24,5 +24,6 @@ typedef struct s_info
 int				check_info(t_info *info);
 int				set_info(int argc, char *argv[], t_info *info);
 void			init_info(t_info *info);
+void			free_info(t_info *info);
 
 #endif
