@@ -7,10 +7,6 @@ static int	puts_help(void)
 	fputs("-h      : Standard output of how to use bfi, the option you're currently using.\n", stdout);
 	fputs("-c      : Treat the string after the option as a code\n", stdout);
 	fputs("-b      : Specify the size of the buffer as a natural number, default is 30000.\n", stdout);
-	fputs("--config: You can specify the characters to be used in the code, and the buffer size.\n", stdout);
-	fputs("          ex.) +=$\n", stdout);
-	fputs("               >=%\n", stdout);
-	fputs("               buffer_size=57\n", stdout);
 	fputs("\n", stdout);
 	fputs("The code consists of the following eight characters (default case)\n", stdout);
 	fputs("+: Increment the value pointed to by the pointer\n", stdout);
@@ -81,8 +77,6 @@ int			set_info(int argc, char *argv[], t_info *info)
 			rtv += set_buffer_size(i, argv, info);
 			i++;
 		}
-		else if (!strcmp("--config", argv[i]))
-			(void)NULL;
 		else if (!strcmp("-c", argv[i]))
 		{
 			rtv += set_cmd(i, argv, info);
