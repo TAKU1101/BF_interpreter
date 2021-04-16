@@ -27,5 +27,6 @@ int				set_info(int argc, char *argv[], t_info *info);
 void			init_info(t_info *info);
 void			free_info(t_info *info);
 void			exec_code(t_info *info);
+int				check_exten(char *filepath, char *exten);
 
 #endif

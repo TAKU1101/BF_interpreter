@@ -57,7 +57,19 @@ static int	set_buffer_size(int i, char *argv[], t_info *info)
 	info->buffer_size = n;
 	return (0);
 }
+/*
+static int	set_config(int i, char *argv[], t_info *info)
+{
+	FILE	*file;
 
+	if (!argv[i + 1])
+	{
+		fputs(ONFIG_CANT_OPEN_FILE, stderr);
+		return (1);
+	}
+	if ((file = fopen()))
+}
+*/
 int			set_info(int argc, char *argv[], t_info *info)
 {
 	int i;
@@ -82,7 +94,11 @@ int			set_info(int argc, char *argv[], t_info *info)
 			rtv += set_cmd(i, argv, info);
 			break;
 		}
-		else if (argv[i][0] == '-')
+/*		else if (!strcmp("--config", argv[i]))
+		{
+			rtv += set_config(i, argc, info);
+		}
+*/		else if (argv[i][0] == '-')
 		{
 			rtv += puts_unkonown_option_error(argv[i]);
 			break;

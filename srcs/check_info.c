@@ -24,5 +24,10 @@ int			check_info(t_info *info)
 	}
 	if (info->filename && check_file(info) == -1)
 		return (1);
+	if (check_exten(info->filename, "bf"))
+	{
+		fputs(EXTEN_ERROR, stderr);
+		return (1);
+	}
 	return (0);
 }
